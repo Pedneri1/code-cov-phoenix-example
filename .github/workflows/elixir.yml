@@ -1,0 +1,51 @@
+name: Elixir CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-18.04
+
+    env:
+      MIX_ENV: test
+      CODECOV_TOKEN: f6db7b45-d523-4030-a6a2-2afeb6e35627
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Elixir
+        uses: actions/setup-elixir@v1
+        with:
+          elixir-version: "1.11.3"
+          otp-version: "23.2"
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compilation
+        run: mix compile --warnings-as-errors
+
+      - name: Check formatting
+        run: mix format --check-formatted
+
+      - name: Credo
+        run: mix credo
+
+      - name: Run tests
+        run: mix coveralls.json
+
+      - name: Upload test coverage
+        id: codecov
+        run: bash <(curl -s https://codecov.io/bash)

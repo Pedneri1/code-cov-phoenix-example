@@ -1,4 +1,5 @@
 defmodule CodecovPhoenixExample do
+  @moduledoc false
   def sum(a, b), do: a + b
 
   def sub(a, b), do: a - b
