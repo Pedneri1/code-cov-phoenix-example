@@ -8,12 +8,3 @@ config :codecovPhoenixExample, CodecovPhoenixExampleWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :codecovPhoenixExample, CodecovPhoenixExample.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "codecovphoenixexample_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox

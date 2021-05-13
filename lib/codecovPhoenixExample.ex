@@ -1,9 +1,9 @@
 defmodule CodecovPhoenixExample do
-  @moduledoc """
-  CodecovPhoenixExample keeps the contexts that define your domain
-  and business logic.
+  def sum(a, b), do: a + b
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  def sub(a, b), do: a - b
+
+  def mul(a, b), do: a * b
+
+  def div(a, b), do: a / b
 end

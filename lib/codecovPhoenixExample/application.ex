@@ -8,10 +8,6 @@ defmodule CodecovPhoenixExample.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Start the Ecto repository
-      supervisor(CodecovPhoenixExample.Repo, []),
-      # Start the endpoint when the application starts
-      supervisor(CodecovPhoenixExampleWeb.Endpoint, []),
       # Start your own worker by calling: CodecovPhoenixExample.Worker.start_link(arg1, arg2, arg3)
       # worker(CodecovPhoenixExample.Worker, [arg1, arg2, arg3]),
     ]
